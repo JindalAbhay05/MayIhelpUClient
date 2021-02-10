@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const port = process.env.port || 8000;
+const port = 8000;
 
 const passport = require('passport');
 const passportJwt = require('./config/passportJWTstrategy');
