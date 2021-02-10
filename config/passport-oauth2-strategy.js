@@ -12,7 +12,7 @@ passport.use(
       clientID:
         '483217679431-nokvlaejcsbddgbfvaqhbum5sfr330vm.apps.googleusercontent.com',
       clientSecret: 'az-TCdffr9VmKtm-cJRbR01t',
-      callbackURL: 'http://localhost:8000/api/users/google/callback',
+      callbackURL: 'https://mayihelpu.herokuapp.com/api/users/google/callback',
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ email: profile.emails[0].value }).exec((err, user) => {
