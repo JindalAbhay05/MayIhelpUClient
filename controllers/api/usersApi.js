@@ -82,6 +82,6 @@ module.exports.google = async (req, res) => {
 module.exports.facebook = async (req, res) => {
 
   return res.status(200).json({
-    data: true,
+    data: "Hello everyone",
   });
 };
