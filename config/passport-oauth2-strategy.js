@@ -6,13 +6,17 @@ const crypto = require('crypto');
 
 const User = require('../models/user');
 
+let baseUrl = 'http://localhost:8000/';
+      baseUrl= 'https://mayihelpu.herokuapp.com/';
+
+
 passport.use(
   new googleStrategy(
     {
       clientID:
         '483217679431-nokvlaejcsbddgbfvaqhbum5sfr330vm.apps.googleusercontent.com',
       clientSecret: 'az-TCdffr9VmKtm-cJRbR01t',
-      callbackURL: 'https://mayihelpu.herokuapp.com/api/users/google/callback',
+      callbackURL: `${baseUrl}api/users/google/callback`,
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ email: profile.emails[0].value }).exec((err, user) => {
@@ -20,13 +24,9 @@ passport.use(
           console.log('Error in google authentication', errr);
           return;
         }
-
-        console.log(profile);
-
         if (user) {
           return done(null, user);
         } else {
-          console.log("inside>>>>>>>>>>>>>>")
           User.create(
             {
               name: profile.displayName,

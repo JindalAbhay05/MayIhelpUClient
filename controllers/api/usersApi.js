@@ -27,13 +27,11 @@ module.exports.signUp = async (req, res) => {
         error: 'something went wrong!',
       });
     } else {
-      return res.status(500).json({
-        error: 'User alredy exists!',
+      return res.status(201).json({
+        message: 'User alredy exists!',
       });
     }
   } catch (err) {
-
-
     return res.status(500).json({
       error: err,
     });
@@ -73,9 +71,9 @@ module.exports.login = async (req, res) => {
 };
 
 module.exports.google = async (req, res) => {
-
   return res.status(200).json({
     data: true,
+    user: req.user,
   });
 };
 
