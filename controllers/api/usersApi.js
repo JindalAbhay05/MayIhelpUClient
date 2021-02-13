@@ -1,5 +1,6 @@
 const User = require('../../models/user');
 const jwt = require('jsonwebtoken');
+const userMailer = require('../../mailers/forgotPassword')
 
 module.exports.index = (req, res) => {
   return res.status(200).json({
@@ -61,7 +62,7 @@ module.exports.login = async (req, res) => {
       message: 'Sign in successfully!!',
       success: true,
     };
-
+    userMailer.sendOtp(payLoad);
     return res.status(200).json(jsonData);
   } catch (err) {
     return res.status(401).json({
