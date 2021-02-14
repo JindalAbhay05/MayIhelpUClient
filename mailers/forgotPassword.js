@@ -7,7 +7,7 @@ exports.sendOtp = (payLoad) => {
     console.log("send otp called 2");
     nodeMailer.transporter.sendMail({
         from: 'akshaypamchal201318@gmail.com',
-        to: 'rajendraoad1997@gmail.com',
+        to: 'akshay@daffodilsw.com',
         subject: 'Reset Password OTP',
         html: html
      },
