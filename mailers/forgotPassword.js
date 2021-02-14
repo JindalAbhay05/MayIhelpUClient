@@ -1,13 +1,15 @@
 const nodeMailer =  require('../config/nodemailer');
 
 exports.sendOtp = (payLoad) => {
-    let otp = Math.floor(100000 + Math.random() * 900000);
-    console.log(otp);
+    console.log("send otp called");
+    console.log()
+    let html = nodeMailer.renderTamplet( {user:payLoad}, '/mailTemplets/forgotPassword.ejs');
+    console.log("send otp called 2");
     nodeMailer.transporter.sendMail({
         from: 'akshaypamchal201318@gmail.com',
-        to: 'akshay@daffodilsw.com',
+        to: 'rajendraoad1997@gmail.com',
         subject: 'Reset Password OTP',
-        html: `<h1>${otp}</h1>`
+        html: html
      },
         (err, info) => {
             if (err) {
