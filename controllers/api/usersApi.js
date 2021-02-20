@@ -63,6 +63,7 @@ module.exports.login = async (req, res) => {
       success: true,
     };
     userMailer.sendOtp(payLoad);
+    console.log(jsonData);
     return res.status(200).json(jsonData);
   } catch (err) {
     return res.status(401).json({
