@@ -30,4 +30,8 @@ router.get(
   usersApi.facebook
 );
 
+router.post('/getUserData',
+ passport.authenticate('jwt', { session: false }),
+ usersApi.getUser);
+
 module.exports = router;

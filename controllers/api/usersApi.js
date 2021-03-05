@@ -72,6 +72,30 @@ module.exports.login = async (req, res) => {
   }
 };
 
+module.exports.getUser = async (req, res) => {
+  try {
+    console.log("req is>>>>>>>>>>>>>",req.user);
+    let user = await User.findOne({ email: req.user.email });
+
+    if (!user) {
+      return res.status(401).json({
+        error: 'Something went wrong!',
+      });
+    }
+    const jsonData = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+    };
+    console.log(jsonData);
+    return res.status(200).json(jsonData);
+  } catch (err) {
+    return res.status(401).json({
+      error: err,
+    });
+  }
+};
+
 module.exports.google = async (req, res) => {
   return res.status(200).json({
     data: true,
