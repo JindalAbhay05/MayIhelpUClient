@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const port = process.env.PORT || 8000;
 
@@ -11,7 +12,7 @@ const db = require('./config/mongoose');
 const app = express();
 app.use(cors());
 app.use(passport.initialize());
-app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 const morgan = require('morgan');
 
