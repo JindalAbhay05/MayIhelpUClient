@@ -11,6 +11,7 @@ const db = require('./config/mongoose');
 const app = express();
 app.use(cors());
 app.use(passport.initialize());
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 const morgan = require('morgan');
 
